@@ -1,0 +1,66 @@
+<edges>
+
+<edge id="a" from="0" to="1" priority="1" numLanes="3" speed="10" />
+
+<edge id="b" from="1" to="2" priority="1" numLanes="3" speed="10" />
+
+<edge id="c" from="2" to="3" priority="1" numLanes="3" speed="10" />
+
+<edge id="d" from="3" to="4" priority="1" numLanes="3" speed="10" />
+
+<edge id="e" from="0" to="5" priority="1" numLanes="3" speed="10" />
+
+<edge id="f" from="1" to="6" priority="1" numLanes="3" speed="10" />
+
+<edge id="g" from="2" to="7" priority="1" numLanes="3" speed="10" />
+
+<edge id="h" from="3" to="8" priority="1" numLanes="3" speed="10" />
+
+<edge id="i" from="4" to="9" priority="1" numLanes="3" speed="10" />
+
+<edge id="j" from="5" to="6" priority="1" numLanes="3" speed="10" />
+
+<edge id="k" from="6" to="7" priority="1" numLanes="3" speed="10" />
+
+<edge id="l" from="7" to="8" priority="1" numLanes="3" speed="10" />
+
+<edge id="m" from="8" to="9" priority="1" numLanes="3" speed="10" />
+
+<edge id="n" from="5" to="10" priority="1" numLanes="3" speed="10" />
+
+<edge id="o" from="6" to="11" priority="1" numLanes="3" speed="10" />
+
+<edge id="p" from="7" to="12" priority="1" numLanes="3" speed="10" />
+
+<edge id="q" from="8" to="13" priority="1" numLanes="3" speed="10" />
+
+<edge id="r" from="9" to="14" priority="1" numLanes="3" speed="10" />
+
+<edge id="s" from="10" to="11" priority="1" numLanes="3" speed="10" />
+
+<edge id="t" from="11" to="12" priority="1" numLanes="3" speed="10" />
+
+<edge id="u" from="12" to="13" priority="1" numLanes="3" speed="10" />
+
+<edge id="v" from="13" to="14" priority="1" numLanes="3" speed="10" />
+
+<edge id="w" from="10" to="15" priority="1" numLanes="3" speed="10" />
+
+<edge id="x" from="11" to="16" priority="1" numLanes="3" speed="10" />
+
+<edge id="y" from="12" to="17" priority="1" numLanes="3" speed="10" />
+
+<edge id="z" from="13" to="18" priority="1" numLanes="3" speed="10" />
+
+<edge id="aa" from="14" to="19" priority="1" numLanes="3" speed="10" />
+
+<edge id="ab" from="15" to="16" priority="1" numLanes="3" speed="10" />
+
+<edge id="ac" from="16" to="17" priority="1" numLanes="3" speed="10" />
+
+<edge id="ad" from="17" to="18" priority="1" numLanes="3" speed="10" />
+
+<edge id="ae" from="18" to="19" priority="1" numLanes="3" speed="10" />
+
+
+</edges>
