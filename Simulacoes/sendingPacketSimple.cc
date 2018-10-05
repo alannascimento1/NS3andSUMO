@@ -16,10 +16,9 @@
 #include "ns3/ocb-wifi-mac.h"
 #include "ns3/wifi-80211p-helper.h"
 #include "ns3/wave-mac-helper.h"
-
 #include "ns3/netanim-module.h"
 
-//ns2-mobility
+//tst
 #include <fstream>
 #include <sstream>
 #include "ns3/core-module.h"
@@ -132,7 +131,7 @@ int main (int argc, char *argv[])
   Ipv4InterfaceContainer i = ipv4.Assign (devices);
 
   TypeId tid = TypeId::LookupByName ("ns3::UdpSocketFactory");
-  
+
   Ptr<Socket> recvSink = Socket::CreateSocket (stas.Get (0), tid);
   InetSocketAddress local = InetSocketAddress (Ipv4Address::GetAny (), 80);
   recvSink->Bind (local);
@@ -147,8 +146,8 @@ int main (int argc, char *argv[])
                                   Seconds (1.0), &GenerateTraffic,
                                   source, packetSize, numPackets, interPacketInterval);
 //----------------------------------------------------------------------------
-  AnimationInterface anim("simulations/wave-simple.xml");
-   anim.SetConstantPosition(d.Get(0),125.0,125.0); 
+  AnimationInterface anim("wave-simple.xml");
+   anim.SetConstantPosition(d.Get(0),125.0,125.0);
 
  // Create Ns2MobilityHelper with the specified trace log file as parameter
   Ns2MobilityHelper ns2 = Ns2MobilityHelper (traceFile);
@@ -157,10 +156,6 @@ int main (int argc, char *argv[])
   std::ofstream os;
   os.open (logFile.c_str ());
   ns2.Install (); // configure movements for each node, while reading trace file
-
-  // // Configure callback for logging
-  // Config::Connect ("/NodeList/*/$ns3::MobilityModel/CourseChange",
-  //                  MakeBoundCallback (&CourseChange, &os));
 
   Simulator::Stop (Seconds (duration));
   Simulator::Run ();

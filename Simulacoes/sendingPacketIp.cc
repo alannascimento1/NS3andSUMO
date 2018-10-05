@@ -12,7 +12,7 @@
 #include "ns3/wave-helper.h"
 #include "ns3/internet-module.h"
 
-//ns2-mobility
+//tst
 #include "ns3/netanim-module.h"
 #include <fstream>
 #include <sstream>
@@ -26,7 +26,7 @@ using namespace ns3;
 
 /*
  * ===  VARIÁVEIS GLOBAIS ==============================================================
- *      
+ *
  * =====================================================================================
  */
 NodeContainer nodes; ///< the nodes
@@ -39,7 +39,7 @@ int numWSMP=0;
 /*
  * ===  FUNCTION  ======================================================================
  *         Name:  sendOneIpPacket e sendPacketIp
- *  Description: Funções que irão realizar o envio de pacotes IP 
+ *  Description: Funções que irão realizar o envio de pacotes IP
  * =====================================================================================
  */
 
@@ -55,9 +55,9 @@ void sendOneIpPacket (uint32_t seq, bool ipv6,   int send, int rec)
   // send IPv4 packet or IPv6 packet
   const static uint16_t IPv4_PROT_NUMBER = 0x0800;
   const static uint16_t IPv6_PROT_NUMBER = 0x86DD;
-  
+
   uint16_t protocol = ipv6 ? IPv6_PROT_NUMBER : IPv4_PROT_NUMBER;
-  
+
   Ptr<Packet> p  = Create<Packet> (100);
   SeqTsHeader seqTs;
   seqTs.SetSeq (seq);
@@ -85,7 +85,7 @@ void  sendPacketIp(double sec, int send, int rec){
 
   const TxProfile txProfile = TxProfile (SCH1);
   Simulator::Schedule (Seconds (sec+2.0), &WaveNetDevice::RegisterTxProfile, sender, txProfile);
-  
+
   // both IPv4 and IPv6 packet are transmitted successfully
   Simulator::Schedule (Seconds (sec+2.05), &sendOneIpPacket, numIP+3, true, send, rec);
   Simulator::Schedule (Seconds (sec+2.2), &sendOneIpPacket, numIP+4, false, send, rec);
@@ -99,9 +99,9 @@ void  sendPacketIp(double sec, int send, int rec){
   Simulator::Schedule (Seconds (sec+3.05), &sendOneIpPacket, numIP+6, false, send, rec);
   numIP+=6;
 
-  
 
-} 
+
+}
 
 //###########################################################################################################
 
@@ -132,7 +132,7 @@ void SendOneWsmpPacket  (uint32_t channel, uint32_t seq, int sen)
 void sendWsmpPacket(double sec,  int sen, int rec){
   Ptr<WaveNetDevice>  sender = DynamicCast<WaveNetDevice> (devices.Get (sen));
   Ptr<WaveNetDevice>  receiver = DynamicCast<WaveNetDevice> (devices.Get (rec));
-  
+
   // Alternating access without immediate channel switch
   const SchInfo schInfo = SchInfo (SCH1, false, EXTENDED_ALTERNATING);
   Simulator::Schedule (Seconds (sec+0.0), &WaveNetDevice::StartSch,sender,schInfo);
@@ -179,7 +179,7 @@ bool ReceiveVsa (Ptr<const Packet> pkt,const Address & address, uint32_t, uint32
   return true;
 }
 
-int 
+int
 main (int argc, char *argv[])
 {
 
@@ -216,7 +216,7 @@ main (int argc, char *argv[])
     }
 
   //-----------------------------------------------------------------------------------------------------------
-  
+
   nodes = NodeContainer ();
   nodes.Create (nodeNum);//20 nós
 
@@ -262,21 +262,14 @@ main (int argc, char *argv[])
   sendPacketIp(60.0,11,12);
   sendPacketIp(65.0,12,13);
 
-  // float tempo=0.0;
-  // for (int i = 0; i < 49; ++i)
-  //   {
-  //     sendPacketIp(tempo,i,i+1);
-  //     tempo+=5.0;
-  //   }
-
   // //ENVIANDO PACOTES WSMPs
   // sendWsmpPacket(40.0,0,11);
   // sendWsmpPacket(50.0,0,11);
   // sendWsmpPacket(80.0,0,11);
 
   //---------------------------------------------------------------------------
-  
-  AnimationInterface anim("simulations/sendingPacketIP.xml");
+
+  AnimationInterface anim("sendingPacketIP.xml");
 
 Simulator::Stop (Seconds (600.0));
   Simulator::Run ();
