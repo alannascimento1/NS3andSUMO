@@ -17,8 +17,6 @@
 #include "ns3/wifi-80211p-helper.h"
 #include "ns3/wave-mac-helper.h"
 #include "ns3/netanim-module.h"
-
-//tst
 #include <fstream>
 #include <sstream>
 #include "ns3/core-module.h"
@@ -54,9 +52,9 @@ int main (int argc, char *argv[])
 {
   std::string traceFile;
   std::string logFile;
-
   int    nodeNum;
   double duration;
+  NodeContainer stas;
 
   // Enable logging from the ns2 helper
   LogComponentEnable ("Ns2MobilityHelper",LOG_LEVEL_DEBUG);
@@ -83,15 +81,10 @@ int main (int argc, char *argv[])
       "NOTE 3: Duration must be a positive number. Note that you must know it before to be able to load it.\n\n";
 
       return 0;
-    }
-
-  // Create all nodes.
-  NodeContainer stas;
+    }.
+  
   stas.Create (nodeNum);
-  NodeContainer d;
-  d.Create (2);
 
-  //---------------------------------------------------------------------------------------------------
   std::string phyMode ("OfdmRate6MbpsBW10MHz");
   uint32_t packetSize = 1000; // bytes
   uint32_t numPackets = 800;
@@ -145,12 +138,11 @@ int main (int argc, char *argv[])
   Simulator::ScheduleWithContext (source->GetNode ()->GetId (),
                                   Seconds (1.0), &GenerateTraffic,
                                   source, packetSize, numPackets, interPacketInterval);
-//----------------------------------------------------------------------------
   AnimationInterface anim("wave-simple.xml");
-   anim.SetConstantPosition(d.Get(0),125.0,125.0);
 
  // Create Ns2MobilityHelper with the specified trace log file as parameter
   Ns2MobilityHelper ns2 = Ns2MobilityHelper (traceFile);
+
 
   // open log file for output
   std::ofstream os;
