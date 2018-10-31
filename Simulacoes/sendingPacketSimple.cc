@@ -81,7 +81,7 @@ int main (int argc, char *argv[])
       "NOTE 3: Duration must be a positive number. Note that you must know it before to be able to load it.\n\n";
 
       return 0;
-    }.
+    }
   
   stas.Create (nodeNum);
 
