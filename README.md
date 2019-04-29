@@ -1,6 +1,6 @@
 # NS3andSUMO
 
-Para realizar a simulação é necessário executar o seguinte comando:
+Para realizar a simulação é necessário executar os seguintes comando:
 
 1- Abrir o terminal na pasta "ns-[versao]"
 
